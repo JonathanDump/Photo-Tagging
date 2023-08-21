@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  align-items: center;
+
+  .itemsWrapper {
+    display: flex;
+    gap: 16px;
+
+    .charactersContainer {
+      display: flex;
+    }
+
+    .stopwatch {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -49,7 +49,7 @@ const charactersList = {
 export default function Header() {
   const location = useLocation().pathname;
   const { characters, setCharacters } = useContext(CharactersContext);
-  const { hours, minutes, seconds, pause } = useStopwatch({ autoStart: true });
+  // const { hours, minutes, seconds, pause } = useStopwatch({ autoStart: true });
   console.log(location.includes("/robot-city"));
 
   location.includes("/robot-city")
@@ -75,7 +75,7 @@ export default function Header() {
             ))}
           </div>
           <div className={cl.stopwatch}>
-            {hours}:{minutes}:{seconds}
+            {/* {hours}:{minutes}:{seconds} */}
           </div>
         </div>
       )}

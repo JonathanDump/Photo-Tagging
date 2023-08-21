@@ -1,0 +1,41 @@
+.game {
+  .canvas {
+    height: fit-content;
+    img {
+      width: 100%;
+    }
+  }
+  .pointer {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px dashed aqua;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity ease 0.12s;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    transform: translate(40px, -30px);
+    visibility: hidden;
+    opacity: 0;
+    scale: 0%;
+    transition: opacity ease 0.12s, scale ease 0.12s;
+  }
+  .visible {
+    visibility: visible;
+    opacity: 1;
+    scale: 100%;
+  }
+}
