@@ -8,7 +8,7 @@ export default function Game() {
 
   return (
     <div className={cl.game}>
-      {location === "/robot-city" ? (
+      {location.includes("/robot-city") ? (
         <div className={cl.canvas}>
           <img src="/canvases/robot-city.jpg" alt="" />
         </div>

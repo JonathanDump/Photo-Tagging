@@ -11,28 +11,34 @@ import CharacterCard from "../CharacterCard/CharacterCard";
 const charactersList = {
   robotCity: [
     {
+      id: crypto.randomUUID(),
       img: "/characters/robot-city/Giga-Squidward.png",
       name: "Giga Squidward",
     },
     {
+      id: crypto.randomUUID(),
       img: "/characters/robot-city/Mike-Wasowski.png",
-      name: "Mike-Wasowski",
+      name: "Mike Wasowski",
     },
     {
+      id: crypto.randomUUID(),
       img: "/characters/robot-city/Obelix.png",
       name: "Obelix",
     },
   ],
   universe113: [
     {
+      id: crypto.randomUUID(),
       img: "/characters/universe113/Finn-and-Jake.png",
       name: "Finn and Jake",
     },
     {
+      id: crypto.randomUUID(),
       img: "/characters/universe113/Tom-and-Jerry.png",
       name: "Tom and Jerry",
     },
     {
+      id: crypto.randomUUID(),
       img: "/characters/universe113/R2D2.png",
       name: "R2D2",
     },
@@ -60,8 +66,12 @@ export default function Header() {
       ) : (
         <div className={cl.itemsWrapper}>
           <div className={cl.charactersContainer}>
-            {characters.map((character) => (
-              <CharacterCard img={character.img} name={character.name} />
+            {characters.map((character: Character) => (
+              <CharacterCard
+                key={character.id}
+                img={character.img}
+                name={character.name}
+              />
             ))}
           </div>
           <div className={cl.timer}></div>

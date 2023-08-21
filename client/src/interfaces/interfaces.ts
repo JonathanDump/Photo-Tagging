@@ -1,11 +1,14 @@
+import React from "react";
+
 export interface Character {
+  id?: string;
   img: string;
   name: string;
 }
 
 export interface CharactersContextInterface {
-  characters: Character[] | null;
-  setCharacters: React.Dispatch<React.SetStateAction<Character[] | null>>;
+  characters: Character[] | [];
+  setCharacters: React.Dispatch<React.SetStateAction<Character[]>>;
 }
 
 export interface CharacterCardProps {

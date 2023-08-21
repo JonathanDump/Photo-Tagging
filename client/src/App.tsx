@@ -8,7 +8,7 @@ export const CharactersContext =
   createContext<CharactersContextInterface | null>(null);
 
 function App() {
-  const [characters, setCharacters] = useState<Character[] | null>(null);
+  const [characters, setCharacters] = useState<Character[] | []>([]);
 
   return (
     <CharactersContext.Provider value={{ characters, setCharacters }}>
