@@ -4,8 +4,10 @@ import cl from "./App.module.scss";
 import Header from "./components/Header/Header";
 import { CharactersContextInterface, Character } from "./interfaces/interfaces";
 
-export const CharactersContext =
-  createContext<CharactersContextInterface | null>(null);
+export const CharactersContext = createContext<CharactersContextInterface>({
+  characters: [],
+  setCharacters: null,
+});
 
 function App() {
   const [characters, setCharacters] = useState<Character[] | []>([]);

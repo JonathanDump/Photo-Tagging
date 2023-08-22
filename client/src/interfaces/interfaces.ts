@@ -8,7 +8,7 @@ export interface Character {
 
 export interface CharactersContextInterface {
   characters: Character[] | [];
-  setCharacters: React.Dispatch<React.SetStateAction<Character[]>>;
+  setCharacters: React.Dispatch<React.SetStateAction<Character[]>> | null;
 }
 
 export interface CharacterCardProps {

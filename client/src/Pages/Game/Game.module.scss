@@ -1,9 +1,10 @@
 .game {
   .canvas {
     height: fit-content;
-    img {
-      width: 100%;
-    }
+    max-width: fit-content;
+    // img {
+    //   width: 100%;
+    // }
   }
   .pointer {
     width: 50px;

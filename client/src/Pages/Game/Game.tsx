@@ -15,20 +15,38 @@ export default function Game() {
   console.log("char", characters);
 
   console.log(location);
+
   const handleClick = (e: React.MouseEvent): void => {
     const target = e.target as HTMLDivElement;
-    const x = e.pageX.toString();
-    const y = e.pageY.toString();
+    const rect = target.getBoundingClientRect();
+
+    console.log(rect);
+
+    const rectEndX = rect.width;
+    const rectEndY = rect.height;
+
+    let x = e.pageX;
+    let y = e.pageY;
+
+    if (x + 200 > rectEndX && y + 200 > rectEndY) {
+      x = e.pageX - 135 - 40 - 40;
+      y = e.pageY - (y + 150 - rectEndY);
+    } else if (x + 200 > rectEndX) {
+      x = e.pageX - 135 - 40 - 40;
+    } else if (y + 200 > rectEndY) {
+      y = e.pageY - (y + 150 - rectEndY);
+    }
     console.log(x, y);
     console.log(pointerRef.current);
 
-    pointerRef.current!.style.left = `${x}px`;
-    pointerRef.current!.style.top = `${y}px`;
+    pointerRef.current!.style.left = `${e.pageX.toString()}px`;
+    pointerRef.current!.style.top = `${e.pageY.toString()}px`;
     pointerRef.current!.classList.toggle(cl.visible);
 
-    listRef.current!.style.left = `${x}px`;
-    listRef.current!.style.top = `${y}px`;
+    listRef.current!.style.left = `${x.toString()}px`;
+    listRef.current!.style.top = `${y.toString()}px`;
     listRef.current!.classList.toggle(cl.visible);
+
     setIsVisible(!isVisible);
     // listRef.current!.style.visibility = "visible";
   };
