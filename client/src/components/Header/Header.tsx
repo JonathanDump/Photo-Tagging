@@ -19,6 +19,7 @@ const charactersList = {
         [1345, 2282],
         [1345 + 60, 2282 + 80],
       ],
+      isFounded: false,
     },
     {
       id: crypto.randomUUID(),
@@ -28,6 +29,7 @@ const charactersList = {
         [1222, 1729],
         [1222 + 80, 1729 + 65],
       ],
+      isFounded: false,
     },
     {
       id: crypto.randomUUID(),
@@ -37,6 +39,7 @@ const charactersList = {
         [596, 1254],
         [596 + 80, 1254 + 60],
       ],
+      isFounded: false,
     },
   ],
   universe113: [
@@ -48,6 +51,7 @@ const charactersList = {
         [229, 1438],
         [229 + 60, 1438 + 80],
       ],
+      isFounded: false,
     },
     {
       id: crypto.randomUUID(),
@@ -57,6 +61,7 @@ const charactersList = {
         [1057, 1873],
         [1057 + 60, 1873 + 80],
       ],
+      isFounded: false,
     },
     {
       id: crypto.randomUUID(),
@@ -66,6 +71,7 @@ const charactersList = {
         [1412, 2193],
         [1412 + 60, 2193 + 80],
       ],
+      isFounded: false,
     },
   ],
 };
@@ -100,6 +106,7 @@ export default function Header() {
                 key={character.id}
                 img={character.img}
                 name={character.name}
+                isFounded={character.isFounded}
               />
             ))}
           </div>

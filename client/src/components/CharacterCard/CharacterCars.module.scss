@@ -9,3 +9,9 @@
     }
   }
 }
+.isFounded {
+  img {
+    filter: grayscale(0.8);
+  }
+  text-decoration: line-through;
+}

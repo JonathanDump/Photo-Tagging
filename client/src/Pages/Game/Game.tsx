@@ -4,17 +4,19 @@ import React, { useContext, useRef, useState } from "react";
 import { CharactersContext } from "../../App";
 import { Character } from "../../interfaces/interfaces";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
+import Canvas from "../../components/Canvas/Canvas";
 
 export default function Game() {
   const location = useLocation().pathname;
+  const canvasName = location.split("/")[2];
+
   const pointerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const coords = useRef<number[]>([]);
+
   const { characters, setCharacters } = useContext(CharactersContext);
   const [isVisible, setIsVisible] = useState(false);
-  console.log("char", characters);
-
-  console.log(location);
 
   const handleClick = (e: React.MouseEvent): void => {
     const target = e.target as HTMLDivElement;
@@ -27,6 +29,7 @@ export default function Game() {
 
     let x = e.pageX;
     let y = e.pageY;
+    coords.current = [x, y];
 
     if (x + 200 > rectEndX && y + 200 > rectEndY) {
       x = e.pageX - 135 - 40 - 40;
@@ -48,39 +51,66 @@ export default function Game() {
     listRef.current!.classList.toggle(cl.visible);
 
     setIsVisible(!isVisible);
-    // listRef.current!.style.visibility = "visible";
+  };
+
+  const handleChoose = async (
+    e: React.MouseEvent,
+    name: string
+  ): Promise<void> => {
+    const URL = import.meta.env.VITE_API_ENDPOINT;
+    console.log("URL", URL);
+
+    const body = { name: name, coords: [coords.current[0], coords.current[1]] };
+
+    console.log("body", body);
+
+    const response = await fetch(`${URL}/compare`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const result = await response.json();
+    console.log("result", result);
+
+    if (result.correct) {
+      const newCharacters = characters.map((char) => {
+        if (char.name === name) {
+          char.isFounded = true;
+          return char;
+        }
+        return char;
+      });
+
+      setCharacters!(newCharacters);
+    }
+    console.log("isVisible", isVisible);
+
+    pointerRef.current!.classList.toggle(cl.visible);
+    listRef.current!.classList.toggle(cl.visible);
+    setIsVisible(!isVisible);
   };
 
   return (
     <div className={cl.game}>
-      {location.includes("/robot-city") ? (
-        <div
-          className={cl.canvas}
-          ref={canvasRef}
-          onClick={(e) => handleClick(e)}
-        >
-          <img src="/canvases/robot-city.jpg" alt="" />
-        </div>
-      ) : (
-        <div
-          className={cl.canvas}
-          ref={canvasRef}
-          onClick={(e) => handleClick(e)}
-        >
-          <img src="/canvases/universe113.jpg" alt="" />
-        </div>
-      )}
+      <Canvas
+        canvasRef={canvasRef}
+        handleClick={handleClick}
+        name={canvasName}
+      />
 
       <div className={cl.pointer} ref={pointerRef}></div>
       <div className={cl.list} ref={listRef}>
         {characters.map((character: Character) => {
-          return (
-            <CharacterCard
-              key={character.id}
-              img={character.img}
-              name={character.name}
-            />
-          );
+          if (!character.isFounded) {
+            return (
+              <CharacterCard
+                key={character.id}
+                img={character.img}
+                name={character.name}
+                handleClick={handleChoose}
+              />
+            );
+          }
         })}
       </div>
     </div>

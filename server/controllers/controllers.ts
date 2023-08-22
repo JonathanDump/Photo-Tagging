@@ -21,9 +21,12 @@ exports.compare = asyncHandler(async (req: Request, res: Response) => {
   const [startX, startY] = character.coords[0];
   const [endX, endY] = character.coords[1];
 
+  if (!character) {
+    throw new Error("There is no such character");
+  }
   if (x > endX || x < startX || y > endY || y < startY) {
-    res.json({ message: "wrong" });
+    res.json({ correct: false });
   } else {
-    res.json({ message: "correct" });
+    res.json({ correct: true });
   }
 });

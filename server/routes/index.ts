@@ -9,6 +9,6 @@ router.get("/", (req: Request, res: Response) => {
 // router.post("/create", controllers.setCharacters);
 // module.exports = router;
 
-router.get("/compare", controllers.compare);
+router.post("/compare", controllers.compare);
 
 module.exports = router;

@@ -1,11 +1,19 @@
 import cl from "./CharacterCars.module.scss";
 
 import React from "react";
-import { Character } from "../../interfaces/interfaces";
+import { CharacterCardProps } from "../../interfaces/interfaces";
 
-export default function CharacterCard({ img, name }: Character) {
+export default function CharacterCard({
+  img,
+  name,
+  handleClick,
+  isFounded,
+}: CharacterCardProps) {
+  const clName = !isFounded
+    ? cl.characterCard
+    : `${cl.characterCard} ${cl.isFounded}`;
   return (
-    <div className={cl.characterCard}>
+    <div className={clName} onClick={(e) => handleClick!(e, name)} id={name}>
       <div className={cl.imgContainer}>
         <img src={img} alt="" />
       </div>
