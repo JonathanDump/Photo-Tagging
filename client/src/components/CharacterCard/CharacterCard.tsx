@@ -7,11 +7,11 @@ export default function CharacterCard({
   img,
   name,
   handleClick,
-  isFounded,
+  isFound,
 }: CharacterCardProps) {
-  const clName = !isFounded
+  const clName = !isFound
     ? cl.characterCard
-    : `${cl.characterCard} ${cl.isFounded}`;
+    : `${cl.characterCard} ${cl.isFound}`;
   return (
     <div className={clName} onClick={(e) => handleClick!(e, name)} id={name}>
       <div className={cl.imgContainer}>

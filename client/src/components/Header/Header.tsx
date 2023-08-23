@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import cl from "./Header.module.scss";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CharactersContext } from "../../App";
 import {
   Character,
@@ -8,90 +8,33 @@ import {
 } from "../../interfaces/interfaces";
 import CharacterCard from "../CharacterCard/CharacterCard";
 import { useStopwatch } from "react-timer-hook";
-
-const charactersList = {
-  robotCity: [
-    {
-      id: crypto.randomUUID(),
-      img: "/characters/robot-city/Giga-Squidward.png",
-      name: "Giga Squidward",
-      coords: [
-        [1345, 2282],
-        [1345 + 60, 2282 + 80],
-      ],
-      isFounded: false,
-    },
-    {
-      id: crypto.randomUUID(),
-      img: "/characters/robot-city/Mike-Wasowski.png",
-      name: "Mike Wasowski",
-      coords: [
-        [1222, 1729],
-        [1222 + 80, 1729 + 65],
-      ],
-      isFounded: false,
-    },
-    {
-      id: crypto.randomUUID(),
-      img: "/characters/robot-city/Obelix.png",
-      name: "Obelix",
-      coords: [
-        [596, 1254],
-        [596 + 80, 1254 + 60],
-      ],
-      isFounded: false,
-    },
-  ],
-  universe113: [
-    {
-      id: crypto.randomUUID(),
-      img: "/characters/universe113/Finn-and-Jake.png",
-      name: "Finn and Jake",
-      coords: [
-        [229, 1438],
-        [229 + 60, 1438 + 80],
-      ],
-      isFounded: false,
-    },
-    {
-      id: crypto.randomUUID(),
-      img: "/characters/universe113/Tom-and-Jerry.png",
-      name: "Tom and Jerry",
-      coords: [
-        [1057, 1873],
-        [1057 + 60, 1873 + 80],
-      ],
-      isFounded: false,
-    },
-    {
-      id: crypto.randomUUID(),
-      img: "/characters/universe113/R2D2.png",
-      name: "R2D2",
-      coords: [
-        [1412, 2193],
-        [1412 + 60, 2193 + 80],
-      ],
-      isFounded: false,
-    },
-  ],
-};
+import { charactersList } from "../../misc/charactersList";
 
 export default function Header() {
   const location = useLocation().pathname;
   const { characters, setCharacters } =
     useContext<CharactersContextInterface>(CharactersContext);
-  // const { hours, minutes, seconds, pause } = useStopwatch({ autoStart: true });
+  const { minutes, seconds, pause } = useStopwatch({
+    autoStart: true,
+  });
 
-  // console.log(JSON.stringify(charactersList));
+  useEffect(() => {
+    location.includes("/robot-city")
+      ? setCharacters!(charactersList.robotCity)
+      : location.includes("/universe113")
+      ? setCharacters!(charactersList.universe113)
+      : [];
+  }, []);
 
-  location.includes("/robot-city")
-    ? setCharacters!(charactersList.robotCity)
-    : location.includes("/universe113")
-    ? setCharacters!(charactersList.universe113)
-    : [];
+  useEffect(() => {
+    const arr = characters.filter((character) => !character.isFound);
+    console.log("arr", arr);
 
-  console.log(characters);
-  console.log("charactersString", JSON.stringify(characters));
+    if (arr.length === 0) {
+      pause();
+      console.log("seconds", seconds);
+    }
+  }, [characters]);
 
   return (
     <div className={cl.header}>
@@ -106,12 +49,12 @@ export default function Header() {
                 key={character.id}
                 img={character.img}
                 name={character.name}
-                isFounded={character.isFounded}
+                isFound={character.isFound}
               />
             ))}
           </div>
           <div className={cl.stopwatch}>
-            {/* {hours}:{minutes}:{seconds} */}
+            {minutes}m:{seconds}s
           </div>
         </div>
       )}

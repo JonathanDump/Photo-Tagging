@@ -75,7 +75,7 @@ export default function Game() {
     if (result.correct) {
       const newCharacters = characters.map((char) => {
         if (char.name === name) {
-          char.isFounded = true;
+          char.isFound = true;
           return char;
         }
         return char;
@@ -101,7 +101,7 @@ export default function Game() {
       <div className={cl.pointer} ref={pointerRef}></div>
       <div className={cl.list} ref={listRef}>
         {characters.map((character: Character) => {
-          if (!character.isFounded) {
+          if (!character.isFound) {
             return (
               <CharacterCard
                 key={character.id}

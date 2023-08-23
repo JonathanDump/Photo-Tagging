@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import cl from "./App.module.scss";
 import Header from "./components/Header/Header";
 import { CharactersContextInterface, Character } from "./interfaces/interfaces";
+import { charactersList } from "./misc/charactersList";
 
 export const CharactersContext = createContext<CharactersContextInterface>({
   characters: [],
@@ -10,7 +11,9 @@ export const CharactersContext = createContext<CharactersContextInterface>({
 });
 
 function App() {
-  const [characters, setCharacters] = useState<Character[] | []>([]);
+  const [characters, setCharacters] = useState<Character[] | []>([
+    { id: "", img: "", name: "", isFound: false },
+  ]);
 
   return (
     <CharactersContext.Provider value={{ characters, setCharacters }}>

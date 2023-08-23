@@ -4,7 +4,7 @@ export interface Character {
   id: string;
   img: string;
   name: string;
-  isFounded: boolean;
+  isFound: boolean;
 }
 
 export interface CharactersContextInterface {
@@ -12,10 +12,9 @@ export interface CharactersContextInterface {
   setCharacters: React.Dispatch<React.SetStateAction<Character[]>> | null;
 }
 
-export interface CharacterCardProps
-  extends Omit<Character, "id" | "isFounded"> {
+export interface CharacterCardProps extends Omit<Character, "id" | "isFound"> {
   handleClick?: (e: React.MouseEvent, name: string) => Promise<void>;
-  isFounded?: boolean;
+  isFound?: boolean;
 }
 
 export interface CanvasProps {
