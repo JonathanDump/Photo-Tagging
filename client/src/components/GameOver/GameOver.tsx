@@ -21,6 +21,7 @@ export default function GameOver() {
     const URL = import.meta.env.VITE_API_ENDPOINT;
 
     const body = { name: inputValue, time: stopwatchRef!.current, canvas };
+    console.log("body", body);
 
     const response = await fetch(`${URL}/set-user`, {
       method: "POST",

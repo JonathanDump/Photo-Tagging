@@ -13,4 +13,6 @@ router.post("/compare", controllers.compare);
 
 router.post("/set-user", controllers.setUser);
 
+router.post("/leaderboard", controllers.getLeaders);
+
 module.exports = router;

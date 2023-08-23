@@ -4,8 +4,8 @@ import GameCard from "../../components/GameCard/GameCard";
 export default function StartGame() {
   return (
     <div className={cl.startGame}>
-      <GameCard canvasName="robotCity" />
-      <GameCard canvasName="universe113" />
+      <GameCard canvasName="robotCity" showButton={true} />
+      <GameCard canvasName="universe113" showButton={true} />
     </div>
   );
 }

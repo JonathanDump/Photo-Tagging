@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <div className={cl.header}>
       <div className={cl.logo}>Where is everyone?</div>
-      {location === "/" ? (
+      {location === "/" || location === "/leaderboard" ? (
         <NavLink to={"/leaderboard"}>Leaderboard</NavLink>
       ) : (
         <div className={cl.itemsWrapper}>
