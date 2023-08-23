@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Character = require("../models/character");
-import express, { Request, Response } from "express";
+const User = require("../models/user");
+import express, { Request, Response, NextFunction } from "express";
 import { Character } from "../interfaces/interfaces";
 
 // exports.setCharacters = asyncHandler(async (req: Request, res: Response) => {
@@ -30,3 +31,16 @@ exports.compare = asyncHandler(async (req: Request, res: Response) => {
     res.json({ correct: true });
   }
 });
+
+exports.setUser = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const user = new User({
+      name: req.body.name,
+      time: req.body.time,
+    });
+    await user.save();
+
+    res.status(200).json(user);
+    next();
+  }
+);

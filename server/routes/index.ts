@@ -11,4 +11,6 @@ router.get("/", (req: Request, res: Response) => {
 
 router.post("/compare", controllers.compare);
 
+router.post("/set-user", controllers.setUser);
+
 module.exports = router;
