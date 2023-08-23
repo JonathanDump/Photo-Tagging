@@ -37,6 +37,7 @@ exports.setUser = asyncHandler(
     const user = new User({
       name: req.body.name.trim() === "" ? "" : req.body.name,
       time: req.body.time,
+      canvas: req.body.canvas,
     });
     await user.save();
 

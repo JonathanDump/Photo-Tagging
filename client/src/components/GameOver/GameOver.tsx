@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import cl from "./GameOver.module.scss";
 import { CharactersContext } from "../../App";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function GameOver() {
-  const { stopwatchRef, setIsGameOver } = useContext(CharactersContext);
+  const { stopwatchRef, setIsGameOver, resetRef } =
+    useContext(CharactersContext);
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
+  const canvas = useLocation().pathname.split("/")[2];
+
+  console.log(canvas);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -16,7 +20,7 @@ export default function GameOver() {
     e.preventDefault();
     const URL = import.meta.env.VITE_API_ENDPOINT;
 
-    const body = { name: inputValue, time: stopwatchRef!.current };
+    const body = { name: inputValue, time: stopwatchRef!.current, canvas };
 
     const response = await fetch(`${URL}/set-user`, {
       method: "POST",
@@ -28,6 +32,9 @@ export default function GameOver() {
     const result = await response.json();
     console.log(result);
     setIsGameOver!(false);
+    const autoStart = false;
+    resetRef!.current!(undefined, autoStart);
+
     navigate("/");
   };
   return (

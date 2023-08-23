@@ -5,6 +5,7 @@ const UserSchema = new Schema(
   {
     name: String,
     time: [String],
+    canvas: String,
   },
   { collection: "Users" }
 );

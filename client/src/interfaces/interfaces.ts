@@ -13,6 +13,14 @@ export interface CharactersContextInterface {
   isGameOver: boolean;
   setIsGameOver: React.Dispatch<React.SetStateAction<boolean>> | null;
   stopwatchRef: React.MutableRefObject<number[]> | null;
+  resetRef: React.MutableRefObject<
+    | ((
+        offsetTimestamp?: Date | undefined,
+        autoStart?: boolean | undefined
+      ) => void)
+    | null
+  > | null;
+  startRef: React.MutableRefObject<() => void> | null;
 }
 
 export interface CharacterCardProps extends Omit<Character, "id" | "isFound"> {
@@ -23,13 +31,9 @@ export interface CharacterCardProps extends Omit<Character, "id" | "isFound"> {
 export interface CanvasProps {
   canvasRef: React.RefObject<HTMLDivElement>;
   handleClick: (e: React.MouseEvent) => void;
-  name: string;
+  canvasName: "robotCity" | "universe113";
 }
 
-// export interface HeaderProps {
-//   stopwatchRef: React.MutableRefObject<number[]>;
-// }
-
-// export interface GameOverProps {
-//   stopwatchRef: React.MutableRefObject<number[]>;
-// }
+export interface GameCardProps {
+  canvasName: "robotCity" | "universe113";
+}

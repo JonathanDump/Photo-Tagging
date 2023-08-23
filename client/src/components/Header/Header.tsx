@@ -1,36 +1,37 @@
 import { NavLink, useLocation } from "react-router-dom";
 import cl from "./Header.module.scss";
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { CharactersContext } from "../../App";
 import { Character } from "../../interfaces/interfaces";
 import CharacterCard from "../CharacterCard/CharacterCard";
 import { useStopwatch } from "react-timer-hook";
-import { charactersList } from "../../misc/charactersList";
 
 export default function Header() {
   const location = useLocation().pathname;
-  const { characters, setCharacters, setIsGameOver, stopwatchRef } =
-    useContext(CharactersContext);
-  const { minutes, seconds, pause, start } = useStopwatch({
+  const {
+    characters,
+    setIsGameOver,
+    stopwatchRef,
+    isGameOver,
+    resetRef,
+    startRef,
+  } = useContext(CharactersContext);
+  const { minutes, seconds, pause, start, reset } = useStopwatch({
     autoStart: false,
   });
+
+  console.log("gameOver", isGameOver);
+  resetRef!.current = reset;
+  startRef!.current = start;
 
   useEffect(() => {
     stopwatchRef!.current = [minutes, seconds];
   }, [seconds]);
 
   useEffect(() => {
-    if (location.includes("/robot-city") || location.includes("/universe11")) {
+    if (location.includes("/robotCity") || location.includes("/universe11")) {
       start();
     }
-  }, []);
-
-  useEffect(() => {
-    location.includes("/robot-city")
-      ? setCharacters!(charactersList.robotCity)
-      : location.includes("/universe113")
-      ? setCharacters!(charactersList.universe113)
-      : [];
   }, []);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function Header() {
     if (arr.length === 0) {
       setIsGameOver!(true);
       pause();
+
       console.log("seconds", seconds);
     }
   }, [characters]);

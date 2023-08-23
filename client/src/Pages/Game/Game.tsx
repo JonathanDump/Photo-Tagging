@@ -55,11 +55,7 @@ export default function Game() {
 
   const handleChoose = async (name: string): Promise<void> => {
     const URL = import.meta.env.VITE_API_ENDPOINT;
-    console.log("URL", URL);
-
     const body = { name: name, coords: [coords.current[0], coords.current[1]] };
-
-    console.log("body", body);
 
     const response = await fetch(`${URL}/compare`, {
       method: "POST",
@@ -92,7 +88,7 @@ export default function Game() {
       <Canvas
         canvasRef={canvasRef}
         handleClick={handleClick}
-        name={canvasName}
+        canvasName={canvasName === "robotCity" ? "robotCity" : "universe113"}
       />
 
       <div className={cl.pointer} ref={pointerRef}></div>
