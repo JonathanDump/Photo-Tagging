@@ -13,7 +13,7 @@ export default function CharacterCard({
     ? cl.characterCard
     : `${cl.characterCard} ${cl.isFound}`;
   return (
-    <div className={clName} onClick={(e) => handleClick!(e, name)} id={name}>
+    <div className={clName} onClick={() => handleClick!(name)} id={name}>
       <div className={cl.imgContainer}>
         <img src={img} alt="" />
       </div>

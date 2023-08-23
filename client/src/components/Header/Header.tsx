@@ -2,21 +2,28 @@ import { NavLink, useLocation } from "react-router-dom";
 import cl from "./Header.module.scss";
 import React, { useContext, useEffect } from "react";
 import { CharactersContext } from "../../App";
-import {
-  Character,
-  CharactersContextInterface,
-} from "../../interfaces/interfaces";
+import { Character } from "../../interfaces/interfaces";
 import CharacterCard from "../CharacterCard/CharacterCard";
 import { useStopwatch } from "react-timer-hook";
 import { charactersList } from "../../misc/charactersList";
 
 export default function Header() {
   const location = useLocation().pathname;
-  const { characters, setCharacters } =
-    useContext<CharactersContextInterface>(CharactersContext);
-  const { minutes, seconds, pause } = useStopwatch({
-    autoStart: true,
+  const { characters, setCharacters, setIsGameOver, stopwatchRef } =
+    useContext(CharactersContext);
+  const { minutes, seconds, pause, start } = useStopwatch({
+    autoStart: false,
   });
+
+  useEffect(() => {
+    stopwatchRef!.current = [minutes, seconds];
+  }, [seconds]);
+
+  useEffect(() => {
+    if (location.includes("/robot-city") || location.includes("/universe11")) {
+      start();
+    }
+  }, []);
 
   useEffect(() => {
     location.includes("/robot-city")
@@ -31,6 +38,7 @@ export default function Header() {
     console.log("arr", arr);
 
     if (arr.length === 0) {
+      setIsGameOver!(true);
       pause();
       console.log("seconds", seconds);
     }

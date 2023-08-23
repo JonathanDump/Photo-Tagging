@@ -53,10 +53,7 @@ export default function Game() {
     setIsVisible(!isVisible);
   };
 
-  const handleChoose = async (
-    e: React.MouseEvent,
-    name: string
-  ): Promise<void> => {
+  const handleChoose = async (name: string): Promise<void> => {
     const URL = import.meta.env.VITE_API_ENDPOINT;
     console.log("URL", URL);
 

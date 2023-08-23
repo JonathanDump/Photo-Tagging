@@ -4,7 +4,7 @@ import { Schema } from "mongoose";
 const UserSchema = new Schema(
   {
     name: String,
-    time: String,
+    time: [String],
   },
   { collection: "Users" }
 );

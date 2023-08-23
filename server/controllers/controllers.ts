@@ -35,7 +35,7 @@ exports.compare = asyncHandler(async (req: Request, res: Response) => {
 exports.setUser = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const user = new User({
-      name: req.body.name,
+      name: req.body.name.trim() === "" ? "" : req.body.name,
       time: req.body.time,
     });
     await user.save();
