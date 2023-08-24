@@ -2,8 +2,6 @@ import { LeaderProps } from "../../interfaces/interfaces";
 import cl from "./Leader.module.scss";
 
 export default function Leader({ leader }: LeaderProps) {
-  console.log("Leader", leader);
-
   return (
     <div className={cl.leader}>
       <div className={cl.leaderCol}>

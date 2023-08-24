@@ -1,3 +1,10 @@
-.image {
-  width: 300px;
+.canvasCard {
+  border: 1px dashed red;
+  .image {
+    width: 300px;
+  }
+}
+
+.active {
+  border: 2px solid aqua;
 }
