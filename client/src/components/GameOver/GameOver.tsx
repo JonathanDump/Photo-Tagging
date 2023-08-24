@@ -33,8 +33,8 @@ export default function GameOver() {
     const result = await response.json();
     console.log(result);
     setIsGameOver!(false);
-    const autoStart = false;
-    resetRef!.current!(undefined, autoStart);
+
+    resetRef!.current!(undefined, false);
 
     navigate("/");
   };

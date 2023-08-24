@@ -31,8 +31,10 @@ export default function Header() {
   useEffect(() => {
     if (location.includes("/robotCity") || location.includes("/universe11")) {
       start();
+    } else {
+      reset(undefined, false);
     }
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     const arr = characters.filter((character) => !character.isFound);
@@ -48,7 +50,9 @@ export default function Header() {
 
   return (
     <div className={cl.header}>
-      <div className={cl.logo}>Where is everyone?</div>
+      <NavLink to={"/"} className={cl.logo}>
+        Where is everyone?
+      </NavLink>
       {location === "/" || location === "/leaderboard" ? (
         <NavLink to={"/leaderboard"}>Leaderboard</NavLink>
       ) : (
