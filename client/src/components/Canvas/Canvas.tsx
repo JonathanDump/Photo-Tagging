@@ -12,7 +12,6 @@ export default function Canvas({
   const { characters, setCharacters } = useContext(CharactersContext);
 
   useEffect(() => {
-    console.log(charactersList[canvasName]);
     const chars = JSON.parse(JSON.stringify(charactersList[canvasName]));
     setCharacters!(chars);
   }, []);

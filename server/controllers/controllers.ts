@@ -47,8 +47,6 @@ exports.setUser = asyncHandler(
 );
 
 exports.getLeaders = asyncHandler(async (req: Request, res: Response) => {
-  console.log(req.body);
-
   const leaders = await User.find({ canvas: req.body.canvas });
   res.status(200).json({ leaders });
 });

@@ -21,7 +21,6 @@ export default function Header() {
     autoStart: false,
   });
 
-  // console.log("gameOver", isGameOver);
   resetRef!.current = reset;
   startRef!.current = start;
 

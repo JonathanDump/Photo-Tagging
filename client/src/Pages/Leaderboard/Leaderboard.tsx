@@ -26,10 +26,8 @@ export default function Leaderboard() {
     });
 
     setIsActive(clone);
-    console.log("isActive", isActive);
 
     const URL = import.meta.env.VITE_API_ENDPOINT;
-    console.log(URL);
 
     const body = { canvas: canvasName };
 
@@ -42,7 +40,6 @@ export default function Leaderboard() {
       throw new Error("Couldn't find leaders");
     }
     const result = await response.json();
-    console.log("result", result.leaders);
 
     const leadersSorted = result.leaders.sort(
       (l1: LeaderInterface, l2: LeaderInterface) => {
@@ -53,7 +50,6 @@ export default function Leaderboard() {
         }
       }
     );
-    console.log("sorted", leadersSorted);
 
     setLeaders(leadersSorted);
   };

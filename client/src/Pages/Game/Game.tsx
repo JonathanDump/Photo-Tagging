@@ -22,18 +22,12 @@ export default function Game() {
     const target = e.target as HTMLDivElement;
     const rect = target.getBoundingClientRect();
 
-    console.log(rect);
-
     const rectEndX = rect.width;
     const rectEndY = rect.height;
 
     let x = e.pageX;
     let y = e.pageY;
     coords.current = [x, y];
-
-    // console.log("pagecoords", [x, y]);
-    // console.log("clientCoords", [e.clientX, e.clientY]);
-    // console.log("cahrs", characters);
 
     if (x + 200 > rectEndX && y + 200 > rectEndY) {
       x = e.pageX - 135 - 40 - 40;
@@ -43,8 +37,6 @@ export default function Game() {
     } else if (y + 200 > rectEndY) {
       y = e.pageY - (y + 150 - rectEndY);
     }
-    console.log(x, y);
-    console.log(pointerRef.current);
 
     pointerRef.current!.style.left = `${e.pageX.toString()}px`;
     pointerRef.current!.style.top = `${e.pageY.toString()}px`;
@@ -67,7 +59,6 @@ export default function Game() {
       body: JSON.stringify(body),
     });
     const result = await response.json();
-    console.log("result", result);
 
     if (result.correct) {
       const newCharacters = characters.map((char) => {
@@ -80,7 +71,6 @@ export default function Game() {
 
       setCharacters!(newCharacters);
     }
-    console.log("isVisible", isVisible);
 
     pointerRef.current!.classList.toggle(cl.visible);
     listRef.current!.classList.toggle(cl.visible);

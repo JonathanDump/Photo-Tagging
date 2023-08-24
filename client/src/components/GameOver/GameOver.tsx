@@ -11,8 +11,6 @@ export default function GameOver() {
   const [inputValue, setInputValue] = useState("");
   const canvas = useLocation().pathname.split("/")[2];
 
-  console.log(canvas);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
@@ -22,7 +20,6 @@ export default function GameOver() {
     const URL = import.meta.env.VITE_API_ENDPOINT;
 
     const body = { name: inputValue, time: stopwatchRef!.current, canvas };
-    console.log("body", body);
 
     const response = await fetch(`${URL}/set-user`, {
       method: "POST",
@@ -32,7 +29,7 @@ export default function GameOver() {
       body: JSON.stringify(body),
     });
     const result = await response.json();
-    console.log(result);
+
     setIsGameOver!(false);
 
     resetRef!.current!(undefined, false);

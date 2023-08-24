@@ -19,7 +19,6 @@ export default function GameCard({
   };
 
   const styles = !showButton ? { cursor: "pointer" } : {};
-  console.log(styles);
 
   return (
     <div
