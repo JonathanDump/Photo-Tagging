@@ -9,14 +9,8 @@ import { useStopwatch } from "react-timer-hook";
 
 export default function Header() {
   const location = useLocation().pathname;
-  const {
-    characters,
-    setIsGameOver,
-    stopwatchRef,
-    isGameOver,
-    resetRef,
-    startRef,
-  } = useContext(CharactersContext);
+  const { characters, setIsGameOver, stopwatchRef, resetRef, startRef } =
+    useContext(CharactersContext);
   const { minutes, seconds, pause, start, reset } = useStopwatch({
     autoStart: false,
   });

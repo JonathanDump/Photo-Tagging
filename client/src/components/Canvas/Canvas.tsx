@@ -9,7 +9,7 @@ export default function Canvas({
   handleClick,
   canvasName,
 }: CanvasProps) {
-  const { characters, setCharacters } = useContext(CharactersContext);
+  const { setCharacters } = useContext(CharactersContext);
 
   useEffect(() => {
     const chars = JSON.parse(JSON.stringify(charactersList[canvasName]));

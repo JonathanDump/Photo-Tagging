@@ -21,14 +21,13 @@ export default function GameOver() {
 
     const body = { name: inputValue, time: stopwatchRef!.current, canvas };
 
-    const response = await fetch(`${URL}/set-user`, {
+    await fetch(`${URL}/set-user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     });
-    const result = await response.json();
 
     setIsGameOver!(false);
 

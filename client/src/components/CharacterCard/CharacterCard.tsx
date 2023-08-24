@@ -1,6 +1,4 @@
 import cl from "./CharacterCars.module.scss";
-
-import React from "react";
 import { CharacterCardProps } from "../../interfaces/interfaces";
 
 export default function CharacterCard({
