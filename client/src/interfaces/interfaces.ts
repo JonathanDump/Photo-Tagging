@@ -37,7 +37,7 @@ export interface CanvasProps {
 export interface GameCardProps {
   canvasName: "robotCity" | "universe113";
   showButton: boolean;
-  isActive: boolean;
+  isActive?: boolean;
   handleClickLeaderboard?: (
     canvasName?: "robotCity" | "universe113"
   ) => Promise<void>;

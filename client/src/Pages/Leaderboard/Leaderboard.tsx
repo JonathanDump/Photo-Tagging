@@ -46,10 +46,10 @@ export default function Leaderboard() {
 
     const leadersSorted = result.leaders.sort(
       (l1: LeaderInterface, l2: LeaderInterface) => {
-        if (+l1.time[0] - +l2.time[0]) {
-          if (+l1.time[1] - +l2.time[1]) {
-            return 1;
-          }
+        if (+l1.time[0] === +l2.time[0]) {
+          return +l1.time[1] - +l2.time[1];
+        } else {
+          return +l1.time[0] - +l2.time[0];
         }
       }
     );
@@ -64,21 +64,23 @@ export default function Leaderboard() {
 
   return (
     <div className={cl.leaderboard}>
-      <GameCard
-        canvasName="robotCity"
-        showButton={false}
-        handleClickLeaderboard={handleClickLeaderboard}
-        isActive={isActive.robotCity}
-      />
-      <GameCard
-        canvasName="universe113"
-        showButton={false}
-        handleClickLeaderboard={handleClickLeaderboard}
-        isActive={isActive.universe113}
-      />
+      <div className={cl.gameCards}>
+        <GameCard
+          canvasName="robotCity"
+          showButton={false}
+          handleClickLeaderboard={handleClickLeaderboard}
+          isActive={isActive.robotCity}
+        />
+        <GameCard
+          canvasName="universe113"
+          showButton={false}
+          handleClickLeaderboard={handleClickLeaderboard}
+          isActive={isActive.universe113}
+        />
+      </div>
 
       <div className={cl.table}>
-        <div className={cl.title}>Leaderboard</div>
+        <div className={cl.title}>Leaders</div>
         {leaders.map((leader) => {
           return <Leader key={leader._id} leader={leader} />;
         })}

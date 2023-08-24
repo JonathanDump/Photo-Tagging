@@ -11,14 +11,10 @@ export default function Canvas({
 }: CanvasProps) {
   const { characters, setCharacters } = useContext(CharactersContext);
 
-  console.log("list", charactersList[canvasName]);
   useEffect(() => {
     console.log(charactersList[canvasName]);
     const chars = JSON.parse(JSON.stringify(charactersList[canvasName]));
-
     setCharacters!(chars);
-
-    console.log("characters", characters);
   }, []);
 
   return (

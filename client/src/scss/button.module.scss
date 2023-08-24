@@ -1,0 +1,26 @@
+@import "./variables";
+.wrapper {
+  background-color: $color-orange;
+  position: relative;
+  border-radius: $border-radius;
+  width: fit-content;
+}
+.button {
+  border: none;
+  text-decoration: none;
+  color: black;
+  background-color: $color-light-orange;
+  padding: $padding-btn;
+  border-radius: $border-radius;
+  text-align: center;
+  transition: $transition;
+  // position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    transform: translate(4px, -4px);
+  }
+}

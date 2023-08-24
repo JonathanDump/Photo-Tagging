@@ -1,0 +1,36 @@
+@import "../../scss/variables";
+
+.gameOverContainer {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .gameOver {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: $color-beige;
+    border-radius: $border-radius;
+    padding: 16px;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+
+      input {
+        border-radius: $border-radius;
+        padding: 0 6px;
+        border: none;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}

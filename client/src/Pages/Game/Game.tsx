@@ -31,6 +31,10 @@ export default function Game() {
     let y = e.pageY;
     coords.current = [x, y];
 
+    // console.log("pagecoords", [x, y]);
+    // console.log("clientCoords", [e.clientX, e.clientY]);
+    // console.log("cahrs", characters);
+
     if (x + 200 > rectEndX && y + 200 > rectEndY) {
       x = e.pageX - 135 - 40 - 40;
       y = e.pageY - (y + 150 - rectEndY);

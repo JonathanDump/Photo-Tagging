@@ -1,13 +1,30 @@
+@import "../../scss/variables";
+
 .header {
   display: flex;
   align-items: center;
   position: sticky;
-  top: 0;
+  // width: 100wv;
   background-color: white;
+  justify-content: space-between;
+  padding: $padding-header;
+  background-color: $color-dark-gray;
+  gap: 8px;
+
+  .logo {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    color: $color-orange;
+  }
 
   .itemsWrapper {
     display: flex;
     gap: 16px;
+    background-color: $color-light-orange;
+    padding: 8px;
+    border-radius: $border-radius;
+    justify-content: space-between;
 
     .charactersContainer {
       display: flex;
@@ -16,6 +33,21 @@
     .stopwatch {
       display: flex;
       align-items: center;
+      background-color: $color-dark-gray;
+      box-sizing: border-box;
+      padding: 8px;
+      min-width: 100px;
+      height: fit-content;
+      align-self: center;
+      color: $color-orange;
+      justify-content: center;
+      border-radius: $border-radius;
+      font-size: 20px;
+    }
+
+    .charactersContainer {
+      display: flex;
+      gap: 16px;
     }
   }
 }

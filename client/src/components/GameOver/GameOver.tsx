@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import cl from "./GameOver.module.scss";
 import { CharactersContext } from "../../App";
 import { useLocation, useNavigate } from "react-router-dom";
+import btn from "../../scss/button.module.scss";
 
 export default function GameOver() {
   const { stopwatchRef, setIsGameOver, resetRef } =
@@ -39,21 +40,25 @@ export default function GameOver() {
     navigate("/");
   };
   return (
-    <div className={cl.gameOver}>
-      <div className={cl.message}>
-        You found everyone in {stopwatchRef!.current[0]}m:
-        {stopwatchRef!.current[1]}
+    <div className={cl.gameOverContainer}>
+      <div className={cl.gameOver}>
+        <div className={cl.message}>
+          You found everyone in {stopwatchRef!.current[0]}m:
+          {stopwatchRef!.current[1]}s
+        </div>
+        <form className={cl.form} onSubmit={(e) => handleSubmitForm(e)}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={inputValue}
+            onChange={handleChange}
+          />
+          <div className={btn.wrapper}>
+            <button className={btn.button}>Submit</button>
+          </div>
+        </form>
       </div>
-      <form className={cl.form} onSubmit={(e) => handleSubmitForm(e)}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={inputValue}
-          onChange={handleChange}
-        />
-        <button>Submit</button>
-      </form>
     </div>
   );
 }

@@ -31,8 +31,6 @@ function App() {
   >(null);
   const startRef = useRef(() => {});
 
-  console.log(stopwatchRef.current);
-
   return (
     <CharactersContext.Provider
       value={{
@@ -51,6 +49,7 @@ function App() {
           <Outlet />
         </div>
         {isGameOver && <GameOver />}
+        {/* <GameOver /> */}
       </div>
     </CharactersContext.Provider>
   );

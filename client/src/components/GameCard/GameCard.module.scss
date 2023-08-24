@@ -1,10 +1,32 @@
+@import "../../scss/variables";
+
 .canvasCard {
-  border: 1px dashed red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  gap: 8px;
+  padding: $padding-game-card;
+  background-color: $color-dark-gray;
+  border-radius: $border-radius;
+  color: $color-beige;
+  box-shadow: $box-shadow;
+  height: fit-content;
+
   .image {
-    width: 300px;
+    max-width: 500px;
+    min-width: 115px;
+    width: 100%;
+    border-radius: $border-radius;
+  }
+
+  .canvasName {
+    font-size: 20px;
   }
 }
 
 .active {
-  border: 2px solid aqua;
+  // border: 2px solid $color-orange;
+  box-shadow: $color-light-orange 0px 19px 38px,
+    $color-light-orange 0px 15px 12px;
 }

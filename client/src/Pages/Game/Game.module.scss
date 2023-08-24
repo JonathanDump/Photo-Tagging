@@ -1,3 +1,5 @@
+@import "../../scss/variables";
+
 .game {
   // .canvas {
   //   height: fit-content;
@@ -23,6 +25,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
+    gap: 8px;
     top: 0;
     left: 0;
     background-color: white;
@@ -31,6 +34,8 @@
     opacity: 0;
     scale: 0%;
     transition: opacity ease 0.12s, scale ease 0.12s;
+    padding: 8px;
+    border-radius: $border-radius;
   }
   .visible {
     visibility: visible;

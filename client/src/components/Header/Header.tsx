@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import cl from "./Header.module.scss";
+import btn from "../../scss/button.module.scss";
 import { useContext, useEffect } from "react";
 import { CharactersContext } from "../../App";
 import { Character } from "../../interfaces/interfaces";
@@ -20,7 +21,7 @@ export default function Header() {
     autoStart: false,
   });
 
-  console.log("gameOver", isGameOver);
+  // console.log("gameOver", isGameOver);
   resetRef!.current = reset;
   startRef!.current = start;
 
@@ -38,13 +39,10 @@ export default function Header() {
 
   useEffect(() => {
     const arr = characters.filter((character) => !character.isFound);
-    console.log("arr", arr);
 
     if (arr.length === 0) {
       setIsGameOver!(true);
       pause();
-
-      console.log("seconds", seconds);
     }
   }, [characters]);
 
@@ -54,7 +52,11 @@ export default function Header() {
         Where is everyone?
       </NavLink>
       {location === "/" || location === "/leaderboard" ? (
-        <NavLink to={"/leaderboard"}>Leaderboard</NavLink>
+        <div className={btn.wrapper}>
+          <NavLink className={btn.button} to={"/leaderboard"}>
+            Leaderboard
+          </NavLink>
+        </div>
       ) : (
         <div className={cl.itemsWrapper}>
           <div className={cl.charactersContainer}>
