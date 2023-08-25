@@ -12,6 +12,7 @@
   color: $color-beige;
   box-shadow: $box-shadow;
   height: fit-content;
+  transition: all 0.2s;
 
   .image {
     max-width: 500px;
