@@ -31,6 +31,7 @@ export default function GameOver() {
 
     setIsGameOver!(false);
 
+    document.body.style.overflow = "auto";
     resetRef!.current!(undefined, false);
 
     navigate("/");

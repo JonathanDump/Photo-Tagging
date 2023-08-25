@@ -4,6 +4,10 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  cursor: default;
+  border-radius: $border-radius;
+  padding: 4px;
+  transition: $transition;
 
   .imgContainer {
     display: flex;
@@ -14,9 +18,17 @@
     }
   }
 }
+
 .isFound {
   img {
     filter: grayscale(0.8);
   }
   text-decoration: line-through;
+}
+
+.inList {
+  cursor: pointer;
+  &:hover {
+    background-color: $color-beige;
+  }
 }

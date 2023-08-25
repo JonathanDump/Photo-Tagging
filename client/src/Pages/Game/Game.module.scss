@@ -36,6 +36,11 @@
     transition: opacity ease 0.12s, scale ease 0.12s;
     padding: 8px;
     border-radius: $border-radius;
+
+    > div:hover {
+      cursor: pointer;
+      background-color: $color-beige;
+    }
   }
   .visible {
     visibility: visible;

@@ -36,6 +36,8 @@ export default function Header() {
     if (arr.length === 0) {
       setIsGameOver!(true);
       pause();
+
+      document.body.style.overflow = "hidden";
     }
   }, [characters]);
 

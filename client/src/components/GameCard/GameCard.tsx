@@ -23,7 +23,13 @@ export default function GameCard({
   return (
     <div
       className={isActive ? `${cl.canvasCard} ${cl.active}` : cl.canvasCard}
-      onClick={() => handleClickLeaderboard!(canvasName)}
+      onClick={
+        handleClickLeaderboard
+          ? () => handleClickLeaderboard!(canvasName)
+          : () => {
+              return;
+            }
+      }
       style={styles}
     >
       <img className={cl.image} src={`/canvases/${canvasName}.jpg`} alt="" />

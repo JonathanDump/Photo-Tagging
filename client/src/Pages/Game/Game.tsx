@@ -19,6 +19,13 @@ export default function Game() {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = (e: React.MouseEvent): void => {
+    if (isVisible) {
+      pointerRef.current!.classList.toggle(cl.visible);
+      listRef.current!.classList.toggle(cl.visible);
+      setIsVisible(!isVisible);
+      return;
+    }
+
     const target = e.target as HTMLDivElement;
     const rect = target.getBoundingClientRect();
 
