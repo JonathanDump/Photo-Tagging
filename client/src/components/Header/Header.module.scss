@@ -4,7 +4,10 @@
   display: flex;
   align-items: center;
   position: sticky;
-  // width: 100wv;
+  top: 0;
+  left: 0;
+  // width: 100%;
+  width: 100vw;
   background-color: white;
   justify-content: space-between;
   padding: $padding-header;
