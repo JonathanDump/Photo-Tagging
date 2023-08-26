@@ -1,7 +1,7 @@
 # Photo-Tagging
 Full Stack APP  
-Game where you have to find everyone  
-Live preview -> https://soft-sunburst-365076.netlify.app/  
+Game where you have to find everyone    
+Live preview -> https://soft-sunburst-365076.netlify.app/    
 
 # Built using 
 
